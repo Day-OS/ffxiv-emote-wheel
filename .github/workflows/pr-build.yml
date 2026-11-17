@@ -1,0 +1,51 @@
+name: Build Emote Wheel
+
+on:
+  pull_request:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+    tags: [ 'v*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+        persist-credentials: false
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Download Dalamud
+      run: |
+        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
+        Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev"
+
+    - name: Build with dotnet
+      run: |
+        $buildArgs = @('build', 'EmoteWheel.slnx', '--configuration', 'Release')
+        if ($env:GITHUB_REF_TYPE -eq 'tag') {
+          $buildArgs += "-p:Version=$($env:GITHUB_REF_NAME.Substring(1))"
+        }
+        dotnet @buildArgs
+
+    - name: Store artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: EmoteWheel
+        path: |
+          EmoteWheel/bin/x64/Release/EmoteWheel/latest.zip
+          EmoteWheel/bin/x64/Release/EmoteWheel/EmoteWheel.json
+        if-no-files-found: error
+        retention-days: 14
+
