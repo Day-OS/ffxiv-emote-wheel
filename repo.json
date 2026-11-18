@@ -1,26 +1,26 @@
 [
-    {
-        "Author":  "Day-OS",
-        "Name":  "Emote Wheel",
-        "InternalName":  "EmoteWheel",
-        "AssemblyVersion":  "0.1.0.0",
-        "Description":  "Open a wheel at your cursor with /emotewheel and click an emote to perform it.\nThe wheel uses favorites from the game\u0027s Emote menu. Open the full catalog with /emotewheel catalog.",
-        "ApplicableVersion":  "any",
-        "Tags":  [
-                     "emote",
-                     "wheel",
-                     "roleplay"
-                 ],
-        "DalamudApiLevel":  15,
-        "LoadRequiredState":  0,
-        "LoadSync":  false,
-        "CanUnloadAsync":  false,
-        "LoadPriority":  0,
-        "Punchline":  "A radial wheel for quickly using your favorite emotes.",
-        "AcceptsFeedback":  true,
-        "DownloadLinkInstall":  "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.0/latest.zip",
-        "DownloadLinkUpdate":  "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.0/latest.zip",
-        "DownloadLinkTesting":  "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.0/latest.zip",
-        "LastUpdate":  1794968228
-    }
+  {
+    "Author": "Day-OS",
+    "Name": "Emote Wheel",
+    "InternalName": "EmoteWheel",
+    "AssemblyVersion": "0.1.1.0",
+    "Description": "Open a wheel at your cursor with /emotewheel and click an emote to perform it.\r\nThe wheel uses favorites from the game's Emote menu. Open the full catalog with /emotewheel catalog.",
+    "ApplicableVersion": "any",
+    "Tags": [
+      "emote",
+      "wheel",
+      "roleplay"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "A radial wheel for quickly using your favorite emotes.",
+    "AcceptsFeedback": true,
+    "DownloadLinkInstall": "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.1/latest.zip",
+    "DownloadLinkTesting": "https://github.com/Day-OS/ffxiv-emote-wheel/releases/download/v0.1.1/latest.zip",
+    "LastUpdate": 1794968485
+  }
 ]
