@@ -177,10 +177,6 @@ public sealed class CatalogWindow : Window
             frontMenu = (depth, min, max);
         var state = StateFor(depth, min, max);
         var drawList = ImGui.GetWindowDrawList();
-        if (depth == 0)
-        {
-            DrawCatalogHeader(drawList);
-        }
         if (!Plugin.ClientState.IsLoggedIn)
             ImGui.TextDisabled("Log in to a character.");
         else if (list.Count == 0)
@@ -220,31 +216,6 @@ public sealed class CatalogWindow : Window
             vertex.Col = (vertex.Col & 0x00FFFFFF) | (alpha << 24);
             vertices[i] = vertex;
         }
-    }
-
-    private static void DrawCatalogHeader(ImDrawListPtr drawList)
-    {
-        var scale = ImGuiHelpers.GlobalScale;
-        var at = ImGui.GetCursorScreenPos();
-        var width = ImGui.GetContentRegionAvail().X;
-        var tint = ImGui.GetColorU32(HudPalette.Brass with { W = 0.17f });
-        var clear = ImGui.GetColorU32(HudPalette.Brass with { W = 0f });
-        drawList.AddRectFilledMultiColor(at - new Vector2(0, 5f * scale),
-            at + new Vector2(width, ImGui.GetTextLineHeightWithSpacing()), tint, clear, clear, tint);
-        using (ImRaii.PushColor(ImGuiCol.Text, HudPalette.Gold))
-            ImGui.TextUnformatted("Emote catalog");
-        ImGui.TextDisabled("Hover to browse  /  Click to use");
-
-        var center = ImGui.GetCursorScreenPos() + new Vector2(width / 2, 4f * scale);
-        var line = ImGui.GetColorU32(HudPalette.Brass with { W = 0.55f });
-        drawList.AddLine(new Vector2(at.X, center.Y), center - new Vector2(6f * scale, 0), line);
-        drawList.AddLine(center + new Vector2(6f * scale, 0), new Vector2(at.X + width, center.Y), line);
-        var dx = new Vector2(3f * scale, 0);
-        var dy = new Vector2(0, 3f * scale);
-        var gold = ImGui.GetColorU32(HudPalette.Gold);
-        drawList.AddTriangleFilled(center - dx, center - dy, center + dx, gold);
-        drawList.AddTriangleFilled(center - dx, center + dx, center + dy, gold);
-        ImGui.Dummy(new Vector2(0, 8f * scale));
     }
 
     private static bool BeginIconMenu(CatalogEntry entry, float blur)

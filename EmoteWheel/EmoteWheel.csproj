@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Version>0.0.0.1</Version>
     <!-- Manifest fields (see https://github.com/goatcorp/DalamudPackager/blob/827d88dc/DalamudPackager/DalamudPackager.cs#L420) -->
-    <Author>Daniela Paladino</Author>
+    <Author>Day-OS</Author>
     <Name>Emote Wheel</Name>
     <Punchline>A radial wheel for quickly using your favorite emotes.</Punchline>
     <Description>Open a wheel at your cursor with /emotewheel and click an emote to perform it.
